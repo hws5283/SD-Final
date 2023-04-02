@@ -1,6 +1,6 @@
 .buttonDiv{
     overflow-y: scroll;
-    height:632px;
+    height:calc(100vh - 184px);
     width: 100%;
     background-color: #161922;
     padding-right: 20px;
@@ -9,3 +9,9 @@
     padding-top: 1px;
 }
 
+@media screen and (max-width: 1200px) {
+    .buttonDiv{
+        height:290px;
+        width: 50vw !important;
+    }
+}

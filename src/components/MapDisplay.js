@@ -16,6 +16,7 @@ import PopupContent from './mapComponents/PopupContent'
 import '../styles/mapdisplay.css'
 import Data from '../devInfo/mapLocations'
 import {useSelector, useDispatch} from 'react-redux';
+import $ from 'jquery';
 //This component displays the react leaflet map 
 //markers positions -> y,x for correct positions 
 
@@ -29,8 +30,8 @@ function MapDisplay(props){
     const[showLayerLake, showLLk] = useState(false);
     const [btnRef,setButtonRef] = useState();
     const popUpRef = useRef();
-    const [update, setUpdate] = useState(false);
     const dispatch = useDispatch();
+    const [leafletEvent,setEventForPopup] = useState();
 
     //this effect is responsible for using the api and getting only the coordinates and name of all markers from controller
     useEffect(()=>{
@@ -60,6 +61,7 @@ function MapDisplay(props){
     //utilizes react leaflet events -> function executes when marker is clicked, given name of marker 
     const markerClick = async(markerName) =>{
         try{
+         
             const response = await fetch(`http://localhost:5000/api/places/byname/${markerName}`);   //default in a get request*, javascript fetch()
             const responseData = await response.json();  //convert to json 
             if(!response.ok){
@@ -69,6 +71,7 @@ function MapDisplay(props){
                 //we got a response...
                 setMarker(responseData.placebyName);  //set object 
             }
+          
         }catch(err){
             console.log(err);
         }
@@ -222,13 +225,13 @@ function MapDisplay(props){
    
     return(
         
-    <div className = "mainDiv" data-testid = "mapDisplay-1">
+    <div className = "mainDiv-specific" data-testid = "mapDisplay-1">
        
         <div className = "mapDisplaySearch">
             <LeftSearch locations = {Data} eventFunction = {clickHandler}></LeftSearch>
         </div>
 
-        <section className="MapDisplayBody">
+    
         <div className = "mapDisplay">    
         {/*responsible for creating map instance and providing to child components, props used as map options  */
         //NOTE - react leaflet is providing mapping to leaflet js with the use of components MUST LOOK AT BOTH DOCUMENTATIONS
@@ -239,7 +242,7 @@ function MapDisplay(props){
                 center={[9,-22]} 
                 zoom={13} 
                 scrollWheelZoom={true} 
-                style = {{height: "752px", width: "800px"}}
+               
                >
                 {showLayerGSF &&
                     <Circle center = {[-40,15]} pathOptions ={fillBlueOptions} radius = {7000000}>
@@ -296,21 +299,21 @@ function MapDisplay(props){
                     eventHandlers={{
                         click: (e) => {
                         markerClick(location.title) //on click we get the rest of the markers data to display 
+                        setEventForPopup(e);
                     },
                     popupclose:()=>{
                        dispatch({type: 'markerClose'});      
                        popUpCloseHandler();
                     },
                     popupopen:(e)=>{     //called wether you click a button on the left or open a marker manually*
-                       popUpRef.current.update();
                        dispatch({type: 'markerOpen', name:location.title});
-                       setUpdate(true);
+                  
                     }
                     }}
                 >
                 <Popup maxWidth={800} minWidth = {300} ref = {popUpRef}>
-                    {clickedMarker && location.title === clickedMarker.title &&
-                        <PopupContent activeMarker = {clickedMarker}></PopupContent>  
+                    {clickedMarker && location.title === clickedMarker.title && isLoading === false &&
+                        <PopupContent activeMarker = {clickedMarker} markerRef = {popUpRef} event = {leafletEvent}></PopupContent>  
                     }
                 </Popup>
                 </Marker>   
@@ -318,18 +321,20 @@ function MapDisplay(props){
                 }  
            </MapContainer>
         </div>   
-        </section>
+
       
-        <section className="MapDisplayBody">
+       
         <div>
-            <div data-testid = "mapButtons-1">
+            <div className = "atlasBody">
+                <div className = "atlasButtons">
                  <MapButtons activation = {centerHandler} activation2 = {zoomOutHandler} activation3 = {zoomInHandler}></MapButtons>
+                 </div>
             </div>
             <div>
                  <Atlas layerController = {testLayerFunction}></Atlas>
             </div>
         </div>   
-        </section>
+       
         </div>
      
     )

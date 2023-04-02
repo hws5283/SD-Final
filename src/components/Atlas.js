@@ -51,5 +51,6 @@ export default function Atlas(props){
                 </div>
                 
              </div>
+          
     )
 }

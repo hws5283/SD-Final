@@ -1,19 +1,20 @@
 import React from 'react'
+import {useEffect,useState} from 'react'
 import './popup.css'
 
 function PopupContent(props){
 
+    
     return(
         <div className ="content-div">
         <div className = "displayImages-grid">
       
-         {props.activeMarker.img &&
+         {props.activeMarker.img &&    
             props.activeMarker.img.map((element)=>(
                 <div className = "imgComponent">
                 <img  className = "popUpimg"src={element} alt= "marker resource"></img>
                 </div>
             ))
-            
          }
          </div>
         <div>
