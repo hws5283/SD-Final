@@ -31,7 +31,6 @@ function MapDisplay(props){
     const [btnRef,setButtonRef] = useState();
     const popUpRef = useRef();
     const dispatch = useDispatch();
-    const [leafletEvent,setEventForPopup] = useState();
 
     //this effect is responsible for using the api and getting only the coordinates and name of all markers from controller
     useEffect(()=>{
@@ -299,7 +298,6 @@ function MapDisplay(props){
                     eventHandlers={{
                         click: (e) => {
                         markerClick(location.title) //on click we get the rest of the markers data to display 
-                        setEventForPopup(e);
                     },
                     popupclose:()=>{
                        dispatch({type: 'markerClose'});      
@@ -313,7 +311,7 @@ function MapDisplay(props){
                 >
                 <Popup maxWidth={800} minWidth = {300} ref = {popUpRef}>
                     {clickedMarker && location.title === clickedMarker.title && isLoading === false &&
-                        <PopupContent activeMarker = {clickedMarker} markerRef = {popUpRef} event = {leafletEvent}></PopupContent>  
+                        <PopupContent activeMarker = {clickedMarker} markerRef = {popUpRef} ></PopupContent>  
                     }
                 </Popup>
                 </Marker>   
@@ -322,8 +320,6 @@ function MapDisplay(props){
            </MapContainer>
         </div>   
 
-      
-       
         <div>
             <div className = "atlasBody">
                 <div className = "atlasButtons">

@@ -12,7 +12,7 @@ function PopupContent(props){
          {props.activeMarker.img &&    
             props.activeMarker.img.map((element)=>(
                 <div className = "imgComponent">
-                <img  className = "popUpimg"src={element} alt= "marker resource"></img>
+                <img  className = "popUpimg"src={element} style = {{hieght: element.height, width:element.width }} alt= "marker resource"></img>
                 </div>
             ))
          }

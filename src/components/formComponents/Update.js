@@ -18,6 +18,7 @@ export default function Update(){
     const[isLoading,setIsLoading] = useState(false);    //controls the loading spinner
     const[successStatus, setSuccess] = useState(false);
     const[showOverlay, setShowOverLay] = useState(false);
+    const[fileData, setFileData] = useState(false);
 
     const changeReducer = (state,action) =>{
         switch(action.type){
@@ -34,13 +35,15 @@ export default function Update(){
                     description: {value: action.value}
                 }
             case "IMAGE_CHANGE":
+                 setFileData(true);
                   return{
                     ...state,
                     images: {formFiles: action.formFiles},
                     fileCount: {value: state.fileCount.value + 1}
                   }
             case "REMOVE_IMAGE":
-                console.log(action.formFiles);
+                  if(state.images.formFiles.length === 1)       
+                    setFileData(false);
                   return{
                     ...state,
                     images: {formFiles: action.formFiles},
@@ -175,7 +178,7 @@ export default function Update(){
       
         <form className = "updateForm" onSubmit={formSubmitHandler}>
             <div className = "selectComponent">
-                <Selection reducer = {dispatch} id = "selection"></Selection>   
+                <Selection reducer = {dispatch} id = "selection" disabled = {fileData}></Selection>   
             </div>
             <div className = "descriptionUpdate">
 

@@ -14,7 +14,7 @@ export default function Selection(props){
     
     return(
         <div className = "dropDown" >
-                <select className = "selectOption" onChange={changeHandler}>
+                <select className = "selectOption" onChange={changeHandler} disabled = {props.disabled}>
                     {
                         Data.map((optionItem)=>(
                             <option key = {optionItem.location} >{optionItem.location}</option>
