@@ -1,6 +1,6 @@
 import {MapContainer,TileLayer, Marker, Popup, Circle} from 'react-leaflet'
 import L from 'leaflet'
-import {useRef, useEffect, useState, useReducer} from 'react'
+import {useRef, useEffect, useState} from 'react'
 import TreeIcon from '../navImages/treeIconV2.png'
 import MntIcon from '../navImages/mountainIconV2.png'
 import OceanIcon from '../navImages/oceanIconClear.png'
@@ -15,8 +15,7 @@ import Atlas from './Atlas'
 import PopupContent from './mapComponents/PopupContent'
 import '../styles/mapdisplay.css'
 import Data from '../devInfo/mapLocations'
-import {useSelector, useDispatch} from 'react-redux';
-import $ from 'jquery';
+import {useDispatch} from 'react-redux';
 //This component displays the react leaflet map 
 //markers positions -> y,x for correct positions 
 
@@ -37,7 +36,7 @@ function MapDisplay(props){
         const sendGetLocations = async () =>{
             setIsLoading(true); //currently loading from db....
             try{
-                const response = await fetch('http://localhost:5000/api/places/');   //default in a get request*, javascript fetch()
+                const response = await fetch(process.env.REACT_APP_BACKEND_URL+'/places/');   //default in a get request*, javascript fetch()
                 const responseData = await response.json();  //convert to json 
                 if(!response.ok){
                     console.log("error loading map data");
@@ -61,7 +60,7 @@ function MapDisplay(props){
     const markerClick = async(markerName) =>{
         try{
          
-            const response = await fetch(`http://localhost:5000/api/places/byname/${markerName}`);   //default in a get request*, javascript fetch()
+            const response = await fetch(process.env.REACT_APP_BACKEND_URL + `/places/byname/${markerName}`);   //default in a get request*, javascript fetch()
             const responseData = await response.json();  //convert to json 
             if(!response.ok){
                 console.log("error loading the rest of the map data");
@@ -82,7 +81,8 @@ function MapDisplay(props){
     //source of map images
     const tileUrl = '../cutsv2/{z}/{x}/{y}.png';
     const center = [0,0];
-    const fillBlueOptions = { color: "#00cc66"};
+    const fillBlueOptions = { color: "#7ca877"};
+    const fillDesertOptions = {color: "#DB8E72"}
     const bounds = [
         [200,-200],
         [-200, 200],
@@ -158,9 +158,6 @@ function MapDisplay(props){
         }
     }
 
-    //const popUpOpenHandler = () =>{
-     //   console.log("marker opened from line 127");
-    //}
 
     //center map, function passed as prop to mapButtons
     const centerHandler = () => {
@@ -265,7 +262,7 @@ function MapDisplay(props){
                     </Circle>
                 }
                 {showLayerLake &&
-                    <Circle center = {[-40,43]} pathOptions ={fillBlueOptions} radius = {1600000}>
+                    <Circle center = {[40,80]} pathOptions ={fillDesertOptions} radius = {6500000}>
                     <Popup>
                     named for myself. Most of the world calls me Lee. My best friends call me Cabbage. But a few people 
                     call me Lucian and I think I’ve always identified with my middle name as much as my first.  
@@ -323,7 +320,7 @@ function MapDisplay(props){
         <div>
             <div className = "atlasBody">
                 <div className = "atlasButtons">
-                 <MapButtons activation = {centerHandler} activation2 = {zoomOutHandler} activation3 = {zoomInHandler}></MapButtons>
+                 <MapButtons activation = {centerHandler} activation2 = {zoomOutHandler} activation3 = {zoomInHandler} displayRef={mapRef}></MapButtons>
                  </div>
             </div>
             <div>

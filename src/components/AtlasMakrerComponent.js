@@ -18,7 +18,7 @@ function AtlasMarkerComponent(props){
 
     return(
         <div className = "atlasEntryContainer">
-        <div className = {(name === props.title) ? "active"+ props.styleInfo: props.styleInfo} ref = {banner}>
+        <div className = {(name === props.title) ? "activeRegion": props.styleInfo} ref = {banner}>
             <div className = "atlasVisual">
             <img className = "atlasIcon" src = {props.img} height = "26px" width = "26px" alt = "marker icon"></img>
             {props.title}

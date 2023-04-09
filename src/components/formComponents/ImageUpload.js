@@ -88,7 +88,7 @@ const ImageUpload = props =>{
 
             <Button type = "button" onClick = {removeImageHandler} text = "-" ></Button>
             <Button type = "button" onClick = {pickImageHandler} text = "+" disabled = {(fileCounter===4)?true:false}></Button>
-            <Button type = "button" onClick = {test} text = "Test"></Button>
+            
         </div>
     )
 }

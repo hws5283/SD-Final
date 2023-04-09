@@ -7,15 +7,13 @@ function PopupContent(props){
     
     return(
         <div className ="content-div">
-        <div className = "displayImages-grid">
-      
+        <div className = "photos">
          {props.activeMarker.img &&    
             props.activeMarker.img.map((element)=>(
-                <div className = "imgComponent">
-                <img  className = "popUpimg"src={element} style = {{hieght: element.height, width:element.width }} alt= "marker resource"></img>
-                </div>
+                <img className = "imgItem" src={element} key = {element.id} alt= "marker resource"></img>
             ))
          }
+        
          </div>
         <div>
          <h1>{props.activeMarker.title}</h1>

@@ -24,9 +24,9 @@ function AboutComp1() {
 
         <div className="content2">
             <div className="text">
-                <h1>How it <span className="spanClass">started</span></h1>
-                <h5>Placeholder subtitle</h5>
-                <p>Placeholder for a paragraph for future iterations. Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. Ultimately, a paragraph is a sentence or group of sentences that support one main idea. In this handout, we will refer to this as the “controlling idea,” because it controls what happens in the rest of the paragraph.</p>
+                <h1>The<span className="spanClass">Beginning</span></h1>
+                <h5>How the Map Started</h5>
+                <p>This paragraph will hold the story of how the map idea and the map itself was created. Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. Ultimately, a paragraph is a sentence or group of sentences that support one main idea. In this handout, we will refer to this as the “controlling idea,” because it controls what happens in the rest of the paragraph.</p>
             </div>
             <img src={map} alt = "Map"/>
         </div>

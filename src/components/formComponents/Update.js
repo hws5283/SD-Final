@@ -85,7 +85,7 @@ export default function Update(){
             let response = "";
             let responseData = "";
             try{
-                response = await fetch(`http://localhost:5000/api/places/byname/${formState.selection.value}`);
+                response = await fetch(process.env.REACT_APP_BACKEND_URL + `/places/byname/${formState.selection.value}`);
                 responseData = await response.json();
                 setLoadedPlace(responseData.placebyName.description);   //STATE CHANGE
                 
@@ -112,7 +112,7 @@ export default function Update(){
         setShowOverLay(false);
         setIsLoading(true);
         //NOTE, USING PROTECTED ROUTE HERE, WE MUST PROVIDE A TOKEN!!!, or this request wont work -> check backend code
-        const url = `http://localhost:5000/api/places/upload/${formState.selection.value}`;  
+        const url = process.env.REACT_APP_BACKEND_URL + `/places/upload/${formState.selection.value}`;  
     
         try{
         const fd = new FormData();

@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useRef} from 'react'
 import "../styles/button.css"
 
 //this component showcases button for map interaction, has connection to Search component
