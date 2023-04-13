@@ -28,7 +28,7 @@ export default function Update(){
                     ...state,
                     selection: { value: action.value}
                 }
-            case "INPUT_CHANGE":
+            case "DESCRIPTION_CHANGE":
                 setLoadedPlace(action.value);
                 return{
                     ...state,
@@ -49,6 +49,11 @@ export default function Update(){
                     images: {formFiles: action.formFiles},
                     fileCount: {value: state.fileCount.value -1}
                   }
+            case "URL_CHANGE":
+                    return{
+                      ...state,
+                      urlLink: {value: action.value}
+                    }
             default:
                 return state;
         }
@@ -58,7 +63,7 @@ export default function Update(){
     const [formState, dispatch] = useReducer(changeReducer,              
         {
             selection: {
-                value: 'Lake Leonard',          
+                value: '15210',          
               },
               description: {
                 value: '',
@@ -68,6 +73,9 @@ export default function Update(){
               },
               fileCount:{
                 value: 0,
+              },
+              urlLink:{
+                value:'',
               }
         },
       );
@@ -115,11 +123,12 @@ export default function Update(){
         const url = process.env.REACT_APP_BACKEND_URL + `/places/upload/${formState.selection.value}`;  
     
         try{
+        //build the form data object
         const fd = new FormData();
         fd.append('description', formState.description.value);
-       
+        fd.append('link', formState.urlLink.value);  
 
-        for(var x = 0; x<formState.images.formFiles.length; x++){  //loop through file array and attach files to form data
+        for(var x = 0; x<formState.images.formFiles.length; x++){  
            fd.append('image', formState.images.formFiles[x]);
         }
 
@@ -132,7 +141,7 @@ export default function Update(){
         await fetch(url,requestOptions);
         
         }catch(err){
-
+            console.log(err);
         };
         setSuccess(true);
         setIsLoading(false);
@@ -145,6 +154,7 @@ export default function Update(){
         console.log(formState.description.value);
         console.log(formState.images.formFiles);
         console.log(formState.fileCount.value);
+        console.log(formState.urlLink.value);
     }
     
     return(
@@ -184,6 +194,7 @@ export default function Update(){
 
             <div className = "box1">
             <Input 
+            changeType = "DESCRIPTION_CHANGE"
             reducer = {dispatch}
             element = "textbox" 
             type = "text" 
@@ -196,6 +207,17 @@ export default function Update(){
             </div>
             <div>
             <ImageUpload id = "images" reducer = {dispatch}></ImageUpload>
+            </div>
+            <div>
+            <Input
+            changeType = "URL_CHANGE"
+            reducer = {dispatch}
+            element = "textbox"
+            type = "text"
+            id = "linkEntry"
+            label = "Url Link"
+            initialValue = {formState.urlLink.value}
+            ></Input>
             </div>
             {successStatus &&
             <div  className = "formFeedback">

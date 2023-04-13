@@ -1,0 +1,14 @@
+[
+    {"feature": "Double Echo Lake", "type": "lake"},
+    {"feature": "Ike Ice Mt", "type": "alpine"},
+    {"feature": "Lake Lally", "type": "lake"},
+    {"feature": "Burke Bank", "type": "woodlands"},
+    {"feature": "Dyl Peak", "type": "alpine"},
+    {"feature": "Ozzy Overlook", "type": "alpine"},
+    {"feature": "Lake Evan", "type": "lake"},
+    {"feature": "Emily Woods", "type": "woodlands"},
+    {"feature": "Kris Cavern", "type": "woodlands"},
+    {"feature": "Palmiero Pass", "type": "woodlands"},
+    {"feature": "Echo Lake", "type": "lake"},
+    {"feature": "Sears Sinks", "type": "woodlands"}
+]

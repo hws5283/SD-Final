@@ -2,6 +2,8 @@ import "../styles/atlas.css"
 import section1 from "../devInfo/gsf.json"
 import section2 from "../devInfo/dd.json"
 import section3 from "../devInfo/mm.json"
+import section4 from "../devInfo/ss.json"
+import section5 from "../devInfo/or.json"
 import AtlasMarkerComponent from "./AtlasMakrerComponent"
 import LakeIcon from "../navImages/lakeIconUse.png"
 import CoastIcon from "../navImages/coastal.png"
@@ -10,12 +12,16 @@ import OceanIcon from "../navImages/oceanIconClear.png"
 import TreeIcon from "../navImages/treeIconV2.png"
 import DesertIcon from "../navImages/desertV5.png"
 import PondIcon from "../navImages/pondV1.png"
+import IceIcon from "../navImages/iceV2.png"
 import "../styles/atlasbuttons.css"
 export default function Atlas(props){
 
+    //different json content for atlas areas 
     const great_shadeck_forest = section1;
     const daves_desert = section2;
     const moors = section3;
+    const ss = section4;
+    const range = section5
 
     const selector = (area) =>{
             if(area === "lake")
@@ -32,6 +38,8 @@ export default function Atlas(props){
                 return DesertIcon;
             if(area === "pond")
                 return PondIcon;
+            if(area === "ice")
+                return IceIcon;
     }
 
     return (
@@ -58,10 +66,30 @@ export default function Atlas(props){
 
                 <div className = "header3">
                     <div className = "contentDiv">
-                    <button className = "headerBtn MM" onClick={() =>{props.layerController("LLucian Lake")}}>Middle of Nowhere</button>
+                    <button className = "headerBtn MM" onClick={() =>{props.layerController("Middle of Nowhere")}}>Middle of Nowhere</button>
                     </div>
                     {moors.map((loc) =>(
                     <AtlasMarkerComponent key = {loc.feature} styleInfo = {"general h3Regions"} title = {loc.feature} img={selector(loc.type)}></AtlasMarkerComponent>
+                    ))}
+
+                </div>
+
+                <div className = "header4">
+                    <div className = "contentDiv">
+                    <button className = "headerBtn SS" onClick={() =>{props.layerController("Skadhauge Steppe")}}>Skadhauge Steppe</button>
+                    </div>
+                    {ss.map((loc) =>(
+                    <AtlasMarkerComponent key = {loc.feature} styleInfo = {"general h4Regions"} title = {loc.feature} img={selector(loc.type)}></AtlasMarkerComponent>
+                    ))}
+
+                </div>
+
+                <div className = "header5">
+                    <div className = "contentDiv">
+                    <button className = "headerBtn OR" onClick={() =>{props.layerController("Oberrath Range")}}>Oberrath Range</button>
+                    </div>
+                    {range.map((loc) =>(
+                    <AtlasMarkerComponent key = {loc.feature} styleInfo = {"general h5Regions"} title = {loc.feature} img={selector(loc.type)}></AtlasMarkerComponent>
                     ))}
 
                 </div>

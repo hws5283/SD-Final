@@ -26,7 +26,12 @@
 .h3Regions{
     background-color: #ffcc74;
 }
-
+.h4Regions{
+    background-color: #95cdf0;
+}
+.h5Regions{
+    background-color: #a9a9a9;
+}
 
 .activeRegion{
     font-family: sans-serif;

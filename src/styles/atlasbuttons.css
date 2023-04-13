@@ -27,6 +27,12 @@
     background: #ffcc74;
    
 }
+.SS{
+    background: #95cdf0;
+}
+.OR{
+    background-color: #a9a9a9;
+}
 
 .headerBtn:hover{
     transform: scale(1.03);
@@ -48,4 +54,12 @@
 .MM:hover{
     border: 2px solid #ffcc74;
     color: #ffcc74;
+}
+.SS:hover{
+    border: 2px solid #95cdf0;
+    color: #95cdf0;
+}
+.OR:hover{
+    border: 2px solid #a9a9a9;
+    color: #a9a9a9;
 }

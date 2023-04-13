@@ -1,6 +1,6 @@
 import React, {useState,useReducer, useEffect} from 'react'
 import { propTypes } from 'react-bootstrap/esm/Image'
-import Data from '../../devInfo/updateLocations.json'
+import Data from '../../devInfo/mapLocations.json'
 import '../../styles/selection.css'
 
 export default function Selection(props){

@@ -9,6 +9,9 @@ import IceIcon from '../navImages/iceV2.png'
 import CoastIcon from '../navImages/coastal.png'
 import DesertIcon from '../navImages/desertV5.png'
 import PondIcon from '../navImages/pondV1.png'
+import SaltIcon from '../navImages/saltFlatsV2.png'
+import HarborIcon from '../navImages/harborV2.png'
+import swampIcon from '../navImages/swampv2.png'
 import LeftSearch from './leftSearch'
 import MapButtons from './MapButtons'
 import Atlas from './Atlas'
@@ -25,8 +28,13 @@ function MapDisplay(props){
     const [clickedMarker, setMarker] = useState(null);     //the current marker the user clicked***
     const[isLoading, setIsLoading] = useState(false);   //loading state
     const[loadedMarks, setLoadedMarks] = useState([]);    //loaded marker data
+    //------------------ control circle overlays
     const[showLayerGSF, showGSF] = useState(false);
     const[showLayerLake, showLLk] = useState(false);
+    const[showLayerMunsoned, showMun] = useState(false);
+    const[showLayerSteppe, showSteppe] = useState(false);
+    const[showLayerRange, showRange] = useState(false);
+    //-------------------- control cirlce overlays 
     const [btnRef,setButtonRef] = useState();
     const popUpRef = useRef();
     const dispatch = useDispatch();
@@ -82,7 +90,11 @@ function MapDisplay(props){
     const tileUrl = '../cutsv2/{z}/{x}/{y}.png';
     const center = [0,0];
     const fillBlueOptions = { color: "#7ca877"};
-    const fillDesertOptions = {color: "#DB8E72"}
+    const fillDesertOptions = {color: "#DB8E72"};
+    const fillMunsonedOptions = {color: "#ffcc74"};
+    const fillSteppeOptions = {color: "#95cdf0"};
+    const fillRangeOptions = {color: "#a9a9a9"};
+    
     const bounds = [
         [200,-200],
         [-200, 200],
@@ -126,6 +138,21 @@ function MapDisplay(props){
 
     const pondSymbol = new L.Icon({
         iconUrl: PondIcon,
+        iconSize:[26,26]
+    });
+
+    const saltSymbol = new L.Icon({
+        iconUrl: SaltIcon,
+        iconSize:[26,26]
+    });
+
+    const harborSymbol = new L.Icon({
+        iconUrl: HarborIcon,
+        iconSize:[26,26]
+    });
+
+    const swampSymbol = new L.Icon({
+        iconUrl: swampIcon,
         iconSize:[26,26]
     });
     //NOTE ****
@@ -185,6 +212,26 @@ function MapDisplay(props){
             else
                 showLLk(false); 
         }
+        if(buttonTitle === "Middle of Nowhere"){
+            if(!showLayerMunsoned)
+                showMun(true);
+            else
+                showMun(false);
+
+        }
+        if(buttonTitle === "Skadhauge Steppe"){
+            if(!showLayerSteppe)
+                showSteppe(true);
+            else
+                showSteppe(false);
+        }
+        if(buttonTitle === "Oberrath Range"){
+            if(!showLayerRange)
+                showRange(true);
+            else
+                showRange(false);
+
+        }
     }
 
     //returns the correct icon based on document area string to show different markers 
@@ -213,6 +260,15 @@ function MapDisplay(props){
         }
         if(area === "pond"){
             return pondSymbol;
+        }
+        if(area === "salt"){
+            return saltSymbol;
+        }
+        if(area === "harbor"){
+            return harborSymbol;
+        }
+        if(area === "swamp"){
+            return swampSymbol;
         }
         else
         return woodSymbol
@@ -264,18 +320,48 @@ function MapDisplay(props){
                 {showLayerLake &&
                     <Circle center = {[40,80]} pathOptions ={fillDesertOptions} radius = {6500000}>
                     <Popup>
-                    named for myself. Most of the world calls me Lee. My best friends call me Cabbage. But a few people 
-                    call me Lucian and I think I’ve always identified with my middle name as much as my first.  
-                    I look like a Lee- I feel like a Lucian.  My brother Dan was the first person to start 
-                    calling me Lucian- which I appreciate.  Heidi and occasionally my kids will call me Lucian.  
-                    I am pretty sure the voice i talk to myself in - is Lucian. It’s illerative and if you say it right 
-                    it sounds like Alutian - which I think is funny.Lucian is my godfather and my dad just liked the name Lee.  
-                    One time my dad said at a family dinner - ‘We were briefly thinking of naming you Lucian Lee- but that’s too Chinese”.  
-                    That was 15+ years ago and it’s still mentioned a few times a year.  
+                     Here is some made up lore about Dave's Desert that can be written for even more information
+                     the users can explore
 
+                     Here possibly more information about Dave's Desert would be found, information not contained in the
+                     Dave's Desert popup.
                     </Popup>
                 </Circle>
-                }             
+                }          
+                {showLayerMunsoned &&
+                    <Circle center = {[60,-100]} pathOptions ={fillMunsonedOptions} radius = {3400000}>
+                    <Popup>
+                     Here is some made up lore about Munsoned in the Middle of Nowhere that can be written for even more information
+                     the users can explore
+
+                     Here possibly more information about Munsoned in the Middle of Nowhere would be found, information not contained in the
+                     Munsoned in the Middle of Nowhere popup.
+                    </Popup>
+                </Circle>
+                }
+                {showLayerSteppe &&
+                    <Circle center = {[-30,-110]} pathOptions ={fillSteppeOptions} radius = {5800000}>
+                    <Popup>
+                     Here is some made up lore about Skadhauge Steppe that can be written for even more information
+                     the users can explore
+
+                     Here possibly more information about Skadhauge Steppe would be found, information not contained in the
+                     Skadhauge Steppe popup.
+                    </Popup>
+                </Circle>
+                }     
+
+                {showLayerRange &&
+                    <Circle center = {[35,20]} pathOptions ={fillRangeOptions} radius = {4500000}>
+                    <Popup>
+                     Here is some made up lore about Oberrath Range that can be written for even more information
+                     the users can explore
+
+                     Here possibly more information about Oberrath Range would be found, information not contained in the
+                     Oberrath Range popup.
+                    </Popup>
+                </Circle>
+                }       
     
                 <TileLayer minZoom={2} maxZoom = {3} noWrap = {true}
                     url={tileUrl}

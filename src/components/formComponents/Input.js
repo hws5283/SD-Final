@@ -7,14 +7,14 @@ const Input = props =>{
 
     const changeHandler = (event) =>{
        props.reducer({
-          type: "INPUT_CHANGE",
+          type: props.changeType,
           value: event.target.value
        })
     }
     //need this, on reloads send an action to the reducer 
     useEffect(()=>{
       props.reducer({
-        type: "INPUT_CHANGE",
+        type: props.changeType,
         value: props.initialValue
       })
     },[props.initialValue])
