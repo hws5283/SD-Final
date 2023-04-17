@@ -26,7 +26,36 @@ function AboutComp1() {
             <div className="text">
                 <h1>The<span className="spanClass">Beginning</span></h1>
                 <h5>How the Map Started</h5>
-                <p>This paragraph will hold the story of how the map idea and the map itself was created. Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. Ultimately, a paragraph is a sentence or group of sentences that support one main idea. In this handout, we will refer to this as the “controlling idea,” because it controls what happens in the rest of the paragraph.</p>
+                <p>
+                    The idea for the map room.
+                    My story and I’m sticking to it goes like this:
+                    Winnie and I purchased 545 W 2nd street - with the plan that we could live in the 
+                    upstairs and Air BNB out the downstairs.  
+                    As we were starting to rehab the downstairs apartment we were 
+                    working on the master bedroom…and as we were sanding and chipping away paint on this wall, 
+                    
+                    Winnie said:
+                    “Those look just like the colors and shapes on an old map.”
+                    And my immediate knee jerk response was “Will you let me?”
+                    And Winnie being Winnie is always encouraging and up for adventures.
+                    See we kinda froze the project in space and took a step back.
+                    There were the colors of the bare plaster; white from stucco from previous repairs; 
+                    and then over the course of about 120 years - somehow there are only 5 layers of 
+                    paint- 2 blues; a brown and 2 green layers .  
+                    (I’m guessing there were years of wallpaper before paint was all that common)
+                    - there were cracks and a few holes and the colors on the wall.
+                    I don’t really know how I got the idea to make up a map based on some of the people 
+                    and places in my life…but I remember there being a big bump in the wall and thinking- 
+                    I can make those into mountains- and Dylan is the tallest person I know- he can be the biggest mountain…
+
+                    And that is how it started.
+                    We filled the wall with the names of the people who were and 
+                    have been closest to us over the years…who stand the test of time- 
+                    cause I still like em and they still tolerate me. It's also a cool visual of our 
+                    people coming together as we begin our life together in our new home. 
+                    I hope you enjoy my/our artistic and emotional endeavor.
+                    Lee and Winnie.
+                </p>
             </div>
             <img src={map} alt = "Map"/>
         </div>

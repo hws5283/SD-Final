@@ -34,6 +34,8 @@ function MapDisplay(props){
     const[showLayerMunsoned, showMun] = useState(false);
     const[showLayerSteppe, showSteppe] = useState(false);
     const[showLayerRange, showRange] = useState(false);
+    const[showHighlands, showHighland] = useState(false);
+    const[showWearylands, showWeary] = useState(false);
     //-------------------- control cirlce overlays 
     const [btnRef,setButtonRef] = useState();
     const popUpRef = useRef();
@@ -232,6 +234,21 @@ function MapDisplay(props){
                 showRange(false);
 
         }
+        if(buttonTitle === "Ars Highlands"){
+            if(!showLayerRange)
+                showHighland(true);
+            else
+                showHighland(false);
+
+        }
+
+        if(buttonTitle === "Wearyland"){
+            if(!showWearylands)
+                showWeary(true);
+            else
+                showWeary(false);
+
+        }
     }
 
     //returns the correct icon based on document area string to show different markers 
@@ -361,7 +378,31 @@ function MapDisplay(props){
                      Oberrath Range popup.
                     </Popup>
                 </Circle>
+                }
+
+                 {showHighlands &&
+                    <Circle center = {[-40,120]} pathOptions ={fillBlueOptions} radius = {4500000}>
+                    <Popup>
+                     Here is some made up lore about Ars Highlands that can be written for even more information
+                     the users can explore
+
+                     Here possibly more information about Ars Highlands would be found, information not contained in the
+                     Oberrath Range popup.
+                    </Popup>
+                </Circle>
                 }       
+
+                {showWearylands &&
+                    <Circle center = {[85,80]} pathOptions ={fillBlueOptions} radius = {500000}>
+                    <Popup>
+                     Here is some made up lore about Ars Highlands that can be written for even more information
+                     the users can explore
+
+                     Here possibly more information about Ars Highlands would be found, information not contained in the
+                     Oberrath Range popup.
+                    </Popup>
+                </Circle>
+                }               
     
                 <TileLayer minZoom={2} maxZoom = {3} noWrap = {true}
                     url={tileUrl}

@@ -1,0 +1,14 @@
+[
+    {"feature": "Mount Montana", "type": "alpine"},
+    {"feature": "3 Sisters Glacier", "type": "ice"},
+    {"feature": "Lake Leonard", "type": "lake"},
+    {"feature": "Wrigley Pond", "type": "pond"},
+    {"feature": "Amber Inlet", "type": "coast"},
+    {"feature": "Lake DZS", "type": "lake"},
+    {"feature": "Mathew Moat", "type": "coast"},
+    {"feature": "Addie Arch", "type": "coast"},
+    {"feature": "Lake Lucy", "type": "lake"},
+    {"feature": "JJ Harbor", "type": "lake"},
+    {"feature": "Lydia Lake", "type": "lake"},
+    {"feature": "Lake Johnney Banannas", "type": "lake"}
+]

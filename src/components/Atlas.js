@@ -4,6 +4,8 @@ import section2 from "../devInfo/dd.json"
 import section3 from "../devInfo/mm.json"
 import section4 from "../devInfo/ss.json"
 import section5 from "../devInfo/or.json"
+import section6 from "../devInfo/ah.json"
+import section7 from "../devInfo/wl.json"
 import AtlasMarkerComponent from "./AtlasMakrerComponent"
 import LakeIcon from "../navImages/lakeIconUse.png"
 import CoastIcon from "../navImages/coastal.png"
@@ -22,6 +24,8 @@ export default function Atlas(props){
     const moors = section3;
     const ss = section4;
     const range = section5
+    const highlands = section6;
+    const weary = section7
 
     const selector = (area) =>{
             if(area === "lake")
@@ -90,6 +94,26 @@ export default function Atlas(props){
                     </div>
                     {range.map((loc) =>(
                     <AtlasMarkerComponent key = {loc.feature} styleInfo = {"general h5Regions"} title = {loc.feature} img={selector(loc.type)}></AtlasMarkerComponent>
+                    ))}
+
+                </div>
+
+                <div className = "header1">
+                    <div className = "contentDiv">
+                    <button className = "headerBtn SSH" onClick={() =>{props.layerController("Ars Highlands")}}>Ars Highlands</button>
+                    </div>
+                    {highlands.map((loc) =>(
+                    <AtlasMarkerComponent key = {loc.feature} styleInfo = {"general h1Regions"} title = {loc.feature} img={selector(loc.type)}></AtlasMarkerComponent>
+                    ))}
+
+                </div>
+
+                <div className = "header1">
+                    <div className = "contentDiv">
+                    <button className = "headerBtn SSH" onClick={() =>{props.layerController("Wearyland")}}>Wearyland</button>
+                    </div>
+                    {weary.map((loc) =>(
+                    <AtlasMarkerComponent key = {loc.feature} styleInfo = {"general h1Regions"} title = {loc.feature} img={selector(loc.type)}></AtlasMarkerComponent>
                     ))}
 
                 </div>
