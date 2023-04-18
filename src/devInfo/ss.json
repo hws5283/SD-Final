@@ -14,7 +14,7 @@
     {"feature": "Remington Ridge", "type": "woodlands"},
     {"feature": "Conner Corner", "type": "woodlands"},
     {"feature": "Dowds Ice Fields", "type": "ice"},
-    {"feature": "Sherry + Sherly Sea", "type": "ocean"},
+    {"feature": "Sherry + Shirley Sea", "type": "ocean"},
     {"feature": "Johnstone Slide", "type": "woodlands"},
     {"feature": "Huynh Hill", "type": "woodlands"},
     {"feature": "Lake Logan", "type": "lake"},
@@ -25,5 +25,6 @@
     {"feature": "Ebbo Ocean", "type": "ocean"},
     {"feature": "Matonak Mountain", "type": "alpine"},
     {"feature": "Harts Content", "type": "woodlands"},
-    {"feature": "Lucia Locke", "type": "coast"}
+    {"feature": "Lucia Locke", "type": "coast"},
+    {"feature": "Skadhauge Steppe", "type": "woodlands"}
 ]

@@ -202,6 +202,8 @@ export default function Update(){
             label = "Description" 
             errorText = "No description provided, add one if needed."
             initialValue = {loadedPlace}
+            rows = {10}
+            columns = {50}
             />
             </div>
             </div>
@@ -217,6 +219,8 @@ export default function Update(){
             id = "linkEntry"
             label = "Url Link"
             initialValue = {formState.urlLink.value}
+            rows = {1}
+            columns = {50}
             ></Input>
             </div>
             {successStatus &&

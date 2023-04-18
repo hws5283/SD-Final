@@ -1,7 +1,7 @@
 [
     {"feature": "Windle Waters", "type": "lake"},
     {"feature": "Eddie C Sea", "type": "ocean"},
-    {"feature": "M Carpenter Caverns", "type": "alpine"},
+    {"feature": "M. Carpenter Caverns", "type": "alpine"},
     {"feature": "Brother Dan's Texan Badlands", "type": "desert"},
     {"feature": "Jake's Badass Lands", "type": "desert"},
     {"feature": "Lake 9586", "type": "lake"},
@@ -18,5 +18,6 @@
     {"feature": "Sundberg Sand Dunes", "type": "desert"},
     {"feature": "Guzik Geyser","type": "woodlands"},
     {"feature": "King Jeff Inlet" , "type": "coast"},
-    {"feature": "Baumman Bay", "type": "coast"}
+    {"feature": "Baumann Bay", "type": "coast"},
+    {"feature": "Dave's Desert", "type": "desert"}
 ]

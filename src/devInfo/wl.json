@@ -1,7 +1,7 @@
 [
     {"feature": "Great Jim O. Northern Expanse", "type": "woodlands"},
     {"feature": "3 Sisters Glacier", "type": "ice"},
-    {"feature": "Feidler Field", "type": "woodlands"},
+    {"feature": "Fiedler Field", "type": "woodlands"},
     {"feature": "Norm + Agnes Open Ocean", "type": "woodlands"},
     {"feature": "Willis Waters", "type": "coast"},
     {"feature": "Erie Iceberg", "type": "ice"},
@@ -9,5 +9,7 @@
     {"feature": "Rachel Pass", "type": "woodlands"},
     {"feature": "Twin Lakes", "type": "lake"},
     {"feature": "Lake Marrie", "type": "lake"},
-    {"feature": "Field of Daisy", "type": "woodlands"}
+    {"feature": "Field of Daisy", "type": "woodlands"},
+    {"feature": "15210", "type": "lake"},
+    {"feature": "Wearyland", "type": "woodlands"}
 ]

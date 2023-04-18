@@ -444,7 +444,7 @@ function MapDisplay(props){
            </MapContainer>
         </div>   
 
-        <div>
+        <div className = "rightDiv">
             <div className = "atlasBody">
                 <div className = "atlasButtons">
                  <MapButtons activation = {centerHandler} activation2 = {zoomOutHandler} activation3 = {zoomInHandler} displayRef={mapRef}></MapButtons>

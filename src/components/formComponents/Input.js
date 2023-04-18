@@ -25,7 +25,7 @@ const Input = props =>{
                  <label className = "LabelArea" htmlFor= {props.id}>{props.label}</label>
             </div>
             <div className = "decriptionInput">
-                <textarea className = "descriptionArea" id = {props.id} rows = {10} cols = {50} onChange = {changeHandler} value = {props.initialValue}></textarea>
+                <textarea className = "descriptionArea" id = {props.id} rows = {props.rows} cols = {props.columns} onChange = {changeHandler} value = {props.initialValue}></textarea>
             </div>   
         </div>
     )

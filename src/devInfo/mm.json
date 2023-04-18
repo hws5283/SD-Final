@@ -1,6 +1,6 @@
 [
     {"feature": "Taylor Faultline", "type": "woodlands"},
-    {"feature": "Lake Holly", "type": "lake"},
+    {"feature": "Lake Holly Anita", "type": "lake"},
     {"feature": "Bill Bay", "type": "coast"},
     {"feature": "Heidi Hill", "type": "woodlands"},
     {"feature": "Drunken Uncle Desert", "type": "desert"},
@@ -23,5 +23,6 @@
     {"feature": "Ockuly Oasis", "type": "woodlands"},
     {"feature": "Pat O Point", "type": "woodlands"},
     {"feature": "Capriotti Sea", "type": "ocean"},
-    {"feature": "Maurice + Michelle Moors", "type": "woodlands"}
+    {"feature": "Maurice + Michelle Moors", "type": "woodlands"},
+    {"feature": "Munsoned in Nowhere", "type": "woodlands"}
 ]

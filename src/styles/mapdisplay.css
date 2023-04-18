@@ -3,6 +3,7 @@
     background-color: #161922;
     z-index: 0;
 }
+
 .map-container{
     height: calc(100vh - 64px) !important;
     width: calc(100vw - 685px) !important;
@@ -37,7 +38,6 @@
     }
     .atlasBody{
         width: 50vw !important;
-      
     }
 }
 
