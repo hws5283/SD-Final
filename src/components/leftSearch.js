@@ -5,28 +5,41 @@ import "../styles/LeftSearch.css"
 import {useRef} from 'react'
 import Search from "./Search"
 import ButtonComp from "./ButtonComp"
-//this component displays the search bar and the generated button list beneath it 
+
 const LeftSearch = (props) => {
 
-    //always holds the full list of locations 
-    const buttonTitles = props.locations;
-    //VALUE OF SEARCH BAR - input holds data submited by user in the search component 
-   // const [input,setInput] = useState('');
+   
+    //const buttonTitles = props.locations;
+    const[buttonTitles, setLoadedTitles] = useState([]);
+    const [match, setMatch] = useState([]);
 
-   //WANT THIS STATE TO CAUSE RE-EVALUATION OF COMPONENT
-    const [match, setMatch] = useState(buttonTitles);
+
+    useEffect(()=>{
+        const sendSearchLocations = async () =>{
+
+            try{
+                const response = await fetch(process.env.REACT_APP_BACKEND_URL+'/places/titles')
+                const responseData = await response.json();
+                setLoadedTitles(responseData);
+                setMatch(responseData);
+            }
+            catch(err){
+                console.log(err);
+            }
+        }
+        sendSearchLocations();   
+    },[]);   //only called when page renders, no dependencies to call this again
+   
+
     //passed to search component 
     const searchInputHandler = inputChild => {
-
-        //set input of user 
-       // setInput(inputChild);
 
        if(inputChild === ""){
         setMatch(buttonTitles);
        }
        else{
             const results = buttonTitles.filter((entry) => {
-            return entry.location.toLowerCase().startsWith(inputChild.toLowerCase());
+            return entry.title.toLowerCase().startsWith(inputChild.toLowerCase());
             })
             setMatch(results);
         }
@@ -41,8 +54,9 @@ const LeftSearch = (props) => {
              <div className = "leftbuttonDiv">
                 {match.map((loc) =>(
                     <ButtonComp
-                        key = {loc.location}
-                        label = {loc.location}
+                        key = {loc.title}
+                        label = {loc.title}
+                        id = {loc.ide}
                         buttonEvent = {props.eventFunction}
                     />
                 ))}

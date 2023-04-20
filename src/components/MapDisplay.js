@@ -234,8 +234,8 @@ function MapDisplay(props){
                 showRange(false);
 
         }
-        if(buttonTitle === "Ars Highlands"){
-            if(!showLayerRange)
+        if(buttonTitle === "4RS Highlands"){
+            if(!showHighlands)
                 showHighland(true);
             else
                 showHighland(false);
@@ -393,7 +393,7 @@ function MapDisplay(props){
                 }       
 
                 {showWearylands &&
-                    <Circle center = {[85,80]} pathOptions ={fillBlueOptions} radius = {500000}>
+                    <Circle center = {[85,80]} pathOptions ={fillMunsonedOptions} radius = {500000}>
                     <Popup>
                      Here is some made up lore about Ars Highlands that can be written for even more information
                      the users can explore

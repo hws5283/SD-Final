@@ -3,8 +3,6 @@ import {useEffect,useState} from 'react'
 import './popup.css'
 
 function PopupContent(props){
-
-    
     return(
         <div className ="content-div">
         <div className = "photos">
@@ -28,7 +26,7 @@ function PopupContent(props){
             {props.activeMarker.link &&
                 props.activeMarker.link.map((element)=>(
                     <div>
-                    <a href = {element}>More Information About {props.activeMarker.title} </a>
+                    <a href = {element} target="_blank" rel='noreferrer'> More Information About {props.activeMarker.title} </a>
                     <br></br>
                     </div>
                 ))
