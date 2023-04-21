@@ -3,7 +3,11 @@
     background-color: #161922;
     z-index: 0;
 }
+.rightDiv{
+  width: 100%;
+  flex:1;
 
+}
 .map-container{
     height: calc(100vh - 64px) !important;
     width: calc(100vw - 685px) !important;

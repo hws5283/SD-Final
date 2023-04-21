@@ -146,17 +146,7 @@ export default function Update(){
         setSuccess(true);
         setIsLoading(false);
     }
-    
-    //All components here need a pointer to the inputHandler function from the useform hook ***
-  
-    const checkData = () =>{
-        console.log(formState.selection.value);
-        console.log(formState.description.value);
-        console.log(formState.images.formFiles);
-        console.log(formState.fileCount.value);
-        console.log(formState.urlLink.value);
-    }
-    
+        
     return(
         <React.Fragment>
         <Modal 
@@ -180,9 +170,6 @@ export default function Update(){
         </Modal>
 
         <div className = "updateDiv">
-            <div>
-                <button onClick = {checkData}>test button</button>
-            </div>
 
         <div className = "formDiv">
       

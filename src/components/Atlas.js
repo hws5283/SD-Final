@@ -100,7 +100,7 @@ export default function Atlas(props){
 
                 <div className = "header1">
                     <div className = "contentDiv">
-                    <button className = "headerBtn SSH" onClick={() =>{props.layerController("4RS Highlands")}}>4RS Highlands</button>
+                    <button className = "headerBtn SSH" onClick={() =>{props.layerController("4RS Highlands")}}>ARS Highlands</button>
                     </div>
                     {highlands.map((loc) =>(
                     <AtlasMarkerComponent key = {loc.feature} styleInfo = {"general h1Regions"} title = {loc.feature} img={selector(loc.type)}></AtlasMarkerComponent>

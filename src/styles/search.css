@@ -4,7 +4,10 @@
 }
 
 .search{
-    width: 335px;
+    width: 100%;
+    background: #f5f5f5;
+    border-radius: 0 5px 5px 0;
+    border: 3px solid #DB8E72;
 }
 
 @media screen and (max-width: 1200px) {
