@@ -1,4 +1,4 @@
-import profile from "../navImages/lee-shadeck.jpg"
+import profile from "../navImages/leeImg1.jpg"
 import map from "../navImages/leeWall.jpg"
 import "../styles/aboutcomp1.css"
 import {Link} from "react-router-dom";

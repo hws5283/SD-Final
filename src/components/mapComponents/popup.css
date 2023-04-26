@@ -10,8 +10,9 @@
   grid-template-columns: auto auto;
 }
 
-.photos img {
-  width: 100%;
-  box-sizing: border-box;
+.imgItem {
+  width: 300px;
+  height: 300px;
   padding:5px;
+  object-fit: scale-down;
 }

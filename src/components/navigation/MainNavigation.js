@@ -36,7 +36,7 @@ const MainNavigation = props =>{
             </button>
             <div className="headerTitle">
             <div className = "navImage">
-                <img height = '50px' width = '50px' src = {require('../../navImages/testIcon.png')} alt = "testing">
+                <img height = '50px' width = '50px' src = {'https://res.cloudinary.com/dog5jmb4w/image/upload/v1682371630/icons/lakeIconUse_gym1fy.png'} alt = "system icon">
                 </img>
             </div>
             <h1 className = "main-navigation__title">

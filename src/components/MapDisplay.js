@@ -1,23 +1,11 @@
 import {MapContainer,TileLayer, Marker, Popup, Circle} from 'react-leaflet'
 import L from 'leaflet'
 import {useRef, useEffect, useState} from 'react'
-import TreeIcon from '../navImages/treeIconV2.png'
-import MntIcon from '../navImages/mountainIconV2.png'
-import OceanIcon from '../navImages/oceanIconClear.png'
-import LakeIcon from '../navImages/lakeIconUse.png'
-import IceIcon from '../navImages/iceV2.png'
-import CoastIcon from '../navImages/coastal.png'
-import DesertIcon from '../navImages/desertV5.png'
-import PondIcon from '../navImages/pondV1.png'
-import SaltIcon from '../navImages/saltFlatsV2.png'
-import HarborIcon from '../navImages/harborV2.png'
-import swampIcon from '../navImages/swampv2.png'
 import LeftSearch from './leftSearch'
 import MapButtons from './MapButtons'
 import Atlas from './Atlas'
 import PopupContent from './mapComponents/PopupContent'
 import '../styles/mapdisplay.css'
-import Data from '../devInfo/mapLocations'
 import {useDispatch} from 'react-redux';
 //This component displays the react leaflet map 
 //markers positions -> y,x for correct positions 
@@ -102,61 +90,7 @@ function MapDisplay(props){
         [-200, 200],
     ]
 
-    //map icons 
-    const woodSymbol = new L.Icon({
-        iconUrl: TreeIcon,
-        iconSize:[26,26]
-    });
-
-    const mntSymbol = new L.Icon({
-        iconUrl: MntIcon,
-        iconSize:[26,26]
-    });
-
-    const lakeSymbol = new L.Icon({
-        iconUrl: LakeIcon,
-        iconSize:[26,26]
-    });
-
-    const iceSymbol = new L.Icon({
-        iconUrl: IceIcon,
-        iconSize:[26,26]
-    });
-
-    const oceanSymbol = new L.Icon({
-        iconUrl: OceanIcon,
-        iconSize:[26,26]
-    });
-
-    const coastSymbol = new L.Icon({
-        iconUrl: CoastIcon,
-        iconSize:[26,26]
-    });
-
-    const desertSymbol = new L.Icon({
-        iconUrl: DesertIcon,
-        iconSize:[26,26]
-    });
-
-    const pondSymbol = new L.Icon({
-        iconUrl: PondIcon,
-        iconSize:[26,26]
-    });
-
-    const saltSymbol = new L.Icon({
-        iconUrl: SaltIcon,
-        iconSize:[26,26]
-    });
-
-    const harborSymbol = new L.Icon({
-        iconUrl: HarborIcon,
-        iconSize:[26,26]
-    });
-
-    const swampSymbol = new L.Icon({
-        iconUrl: swampIcon,
-        iconSize:[26,26]
-    });
+    
     //NOTE ****
     //IF WE USE THE BUTTONS ON THE LEFT WE ALTER THE CSS OF THAT BUTTON WHEN CLICKED, IF WE JUST CLICK A MARKER ON THE MAP, NO BUTTON
     //ON THE LEFT WILL HAVE ITS STYLE CHANGED (DIDNT USE THAT BUTTON TO OPEN THE MARKER), WHEN A MARKER IS OPENED BY CLICKING THE MAP
@@ -251,44 +185,17 @@ function MapDisplay(props){
         }
     }
 
-    //returns the correct icon based on document area string to show different markers 
-    //just check what the field is in the mongodb document
-    const iconSelector = (area) =>{
-        if(area === "woodlands"){
-            return woodSymbol
+
+    const iconSelector = (imgurl) =>{  
+        let Symbol = new L.Icon({
+            iconUrl: imgurl,
+            iconSize:[26,26]
+        });
+
+        if(imgurl){
+            return Symbol;
         }
-        if(area === "alpine"){
-            return mntSymbol
-        }
-        if(area === "lake"){
-            return lakeSymbol
-        }
-        if(area === "ice"){
-            return iceSymbol
-        }
-        if(area === "ocean"){
-            return oceanSymbol
-        }
-        if(area === "coast"){
-            return coastSymbol
-        }
-        if(area ==="desert"){
-            return desertSymbol
-        }
-        if(area === "pond"){
-            return pondSymbol;
-        }
-        if(area === "salt"){
-            return saltSymbol;
-        }
-        if(area === "harbor"){
-            return harborSymbol;
-        }
-        if(area === "swamp"){
-            return swampSymbol;
-        }
-        else
-        return woodSymbol
+       
     }
 
    
@@ -297,7 +204,7 @@ function MapDisplay(props){
     <div className = "mainDiv-specific" data-testid = "mapDisplay-1">
        
         <div className = "mapDisplaySearch">
-            <LeftSearch locations = {Data} eventFunction = {clickHandler}></LeftSearch>
+            <LeftSearch eventFunction = {clickHandler}></LeftSearch>
         </div>
 
     
@@ -433,7 +340,7 @@ function MapDisplay(props){
                     }
                     }}
                 >
-                <Popup maxWidth={800} minWidth = {300} ref = {popUpRef}>
+                <Popup maxWidth={600} ref = {popUpRef}>
                     {clickedMarker && location.title === clickedMarker.title && isLoading === false &&
                         <PopupContent activeMarker = {clickedMarker} markerRef = {popUpRef} ></PopupContent>  
                     }

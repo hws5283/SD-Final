@@ -8,11 +8,8 @@ import ButtonComp from "./ButtonComp"
 
 const LeftSearch = (props) => {
 
-   
-    //const buttonTitles = props.locations;
     const[buttonTitles, setLoadedTitles] = useState([]);
     const [match, setMatch] = useState([]);
-
 
     useEffect(()=>{
         const sendSearchLocations = async () =>{
@@ -28,7 +25,7 @@ const LeftSearch = (props) => {
             }
         }
         sendSearchLocations();   
-    },[]);   //only called when page renders, no dependencies to call this again
+    },[]);   //only call on render
    
 
     //passed to search component 
