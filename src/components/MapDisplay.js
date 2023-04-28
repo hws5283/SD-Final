@@ -142,7 +142,7 @@ function MapDisplay(props){
             else
                 showGSF(false);
         }
-        if(buttonTitle === "LLucian Lake"){
+        if(buttonTitle === "Dave's Desert"){
             if(!showLayerLake)
                 showLLk(true);
             else

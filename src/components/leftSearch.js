@@ -2,18 +2,19 @@ import React from 'react'
 import "leaflet/dist/leaflet.css"
 import { useState,useEffect } from 'react'
 import "../styles/LeftSearch.css"
-import {useRef} from 'react'
 import Search from "./Search"
 import ButtonComp from "./ButtonComp"
+import LoadingSpinner from './general/LoadingSpinner'
 
 const LeftSearch = (props) => {
 
+    const[leftLoad, setLoad] = useState(false);
     const[buttonTitles, setLoadedTitles] = useState([]);
     const [match, setMatch] = useState([]);
 
     useEffect(()=>{
         const sendSearchLocations = async () =>{
-
+            setLoad(true);
             try{
                 const response = await fetch(process.env.REACT_APP_BACKEND_URL+'/places/titles')
                 const responseData = await response.json();
@@ -23,6 +24,7 @@ const LeftSearch = (props) => {
             catch(err){
                 console.log(err);
             }
+            setLoad(false);
         }
         sendSearchLocations();   
     },[]);   //only call on render
@@ -44,6 +46,8 @@ const LeftSearch = (props) => {
 
     return(
         <div className = "leftSearch"> 
+
+        {leftLoad && <LoadingSpinner asOverlay></LoadingSpinner>}
             <Search
                 onInputChange = {searchInputHandler}
              />
