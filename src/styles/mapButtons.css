@@ -14,7 +14,7 @@
     font-weight: bold;
     transition: .4s;
       text-align: center;
-      font-family: sans-serif;
+      font-family: serif;
         width: 90px;
         height: 70px;
 }
@@ -28,6 +28,6 @@
     cursor: pointer;
 }
 .leftBtn{
-    padding-left:15px;
+    padding-left:20px;
     padding-top: 20px;
 }
